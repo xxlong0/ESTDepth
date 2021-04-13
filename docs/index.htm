@@ -1,0 +1,243 @@
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <title>Multi-view Depth Estimation using Epipolar Spatio-Temporal Networks </title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+
+    <!-- Meta tags for Zotero grab citation -->
+    <meta name="citation_title" content="Multi-view Depth Estimation using Epipolar Spatio-Temporal Networks">
+    <meta name="citation_author" content="Long, Xiaoxiao">
+    <meta name="citation_author" content="Liu, Lingjie">
+    <meta name="citation_author" content="Li, Wei">
+    <meta name="citation_author" content="Theobalt, Christian">
+    <meta name="citation_author" content="Wang, Wenping">
+    <meta name="citation_publication_date" content="2021">
+    <meta name="citation_conference_title" content="CVPR">
+    <meta name="citation_pdf_url" content="https://arxiv.org/pdf/2011.13118">
+
+    <meta name="robots" content="index,follow">
+    <meta name="description"
+          content="
+		We present a novel method for multi-view depth estimation from a
+		single video, which is a critical task in various applications, such as perception, reconstruction and robot
+		navigation. Although previous learning-based methods have demonstrated compelling results, most works estimate
+		depth maps of individual video frames independently, without taking into consideration the strong geometric and
+		temporal coherence among the frames. Moreover, current state-of-the-art (SOTA) models mostly adopt a fully 3D
+		convolution network for cost regularization and therefore require high computational cost, thus limiting their
+		deployment in real-world applications. Our method achieves temporally coherent depth estimation results by using
+		a novel Epipolar Spatio-Temporal (EST) transformer to explicitly associate geometric and temporal correlation
+		with multiple estimated depth maps. Furthermore, to reduce the computational cost, inspired by recent
+		Mixture-of-Experts models, we design a compact hybrid network consisting of a 2D context-aware network and a 3D
+		matching network which learn 2D context information and 3D disparity cues separately. Extensive experiments
+		demonstrate that our method achieves higher accuracy in depth estimation and significant speedup than the SOTA
+		methods.
+		">
+    <link rel="author" href="https://www.xxlong.site/"/>
+
+
+    <!-- Fonts and stuff -->
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,800italic,400,700,800'
+          rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="css/project.css" media="screen"/>
+    <link rel="stylesheet" type="text/css" media="screen" href="css/iconize.css"/>
+    <script src="js/google-code-prettify/prettify.js"></script>
+</head>
+
+<body>
+<div id="content">
+    <div id="content-inner">
+        <div class="section logos" style="text-align:center">
+            <a href="https://www.hku.hk/" target="_blank"><IMG src="./logos/Logo_HKU.png" height="35"
+                                                               border="0"></a></td>
+            <a href="http://www.mpi-inf.mpg.de/home/" target="_blank"><IMG src="./logos/Logo_MPII.png" height="35"
+                                                                           border="0"></a></td>
+
+            <a href="https://en.inceptio.ai/" target="_blank"><IMG src="./logos/Logo_inceptio.png" height="35"
+                                                                   border="0"></a></td>
+            <a href="https://www.tamu.edu/" target="_blank"><IMG src="./logos/logo_TAMU.png" height="35"
+                                                                 border="0"></a></td>
+        </div>
+
+        <div class="section head">
+
+            <h1>Multi-view Depth Estimation using Epipolar Spatio-Temporal Networks</h1>
+
+            <div class="authors">
+                <a href="https://www.xxlong.site/" target="_blank">Xiaoxiao Long</a><sup> 1</sup>&#160;&#160;
+                <a href="https://lingjie0206.github.io/" target="_blank">Lingjie Liu</a><sup> 2</sup>&#160;&#160;
+                Wei Li<sup> 3</sup>&#160;&#160;
+                <a href="https://www.cs.hku.hk/people/academic-staff/wenping/">Wenping Wang</a><sup> 1,4</sup>&#160;&#160;
+                <a href="http://people.mpi-inf.mpg.de/~theobalt/" target="_blank">Christian Theobalt</a><sup>2</sup>&#160;&#160;
+            </div>
+
+            <div class="affiliations">
+                <sup>1</sup><a href="https://www.hku.hk/" target="_blank">The University of Hong Kong</a>&#160;&#160;
+                <sup>2</sup><a href="http://www.mpi-inf.mpg.de/home/" target="_blank">MPI Informatics, Saarland
+                Informatics Campus</a>&#160;&#160;
+                <sup>3</sup><a href="https://en.inceptio.ai/" target="_blank">Inceptio Technologt</a>&#160;&#160;
+                <sup>4</sup><a href="https://www.tamu.edu/" target="_blank">Texas A&M University</a>&#160;&#160;
+            </div>
+
+            <div class="venue"><a href="http://cvpr2021.thecvf.com/" target="_blank">CVPR 2021 </a></div>
+
+            <div class="section downloads">
+                <!--<h2>Downloads</h2>-->
+                <center>
+                    <ul>
+                        <li class="grid">
+                            <div class="griditem">
+                                <a href="https://arxiv.org/pdf/2011.13118" target="_blank"
+                                   class="imageLink"><img
+                                        src="./images/pdf.png"></a><br/>
+                                <a href="https://arxiv.org/pdf/2011.13118">Paper</a>
+                            </div>
+                        </li>
+                        <li class="grid">
+                            <div class="griditem">
+                                <a href="https://github.com/xxlong0/ESTDepth" target="_blank"
+                                   class="imageLink"><img
+                                        src="./images/data_ico.png"></a><br/>
+                                <a href="https://github.com/xxlong0/ESTDepth"> Code </a>
+
+                            </div>
+                        </li>
+
+                    </ul>
+                </center>
+            </div>
+        </div>
+
+
+        <div class="section abstract">
+            <h2>Abstract</h2><br>
+            <div class="row" style="margin-bottom:5px">
+                <div class="col" style="text-align:center">
+                    <img class="thumbnail" src="./images/pipeline.png"
+                         style="width:70%; margin-bottom:20px">
+
+                </div>
+
+            </div>
+            <p>
+                We present a novel method for multi-view depth estimation from a
+                single video, which is a critical task in various applications, such as perception, reconstruction and
+                robot
+                navigation. Although previous learning-based methods have demonstrated compelling results, most works
+                estimate
+                depth maps of individual video frames independently, without taking into consideration the strong
+                geometric and
+                temporal coherence among the frames. Moreover, current state-of-the-art (SOTA) models mostly adopt a
+                fully 3D
+                convolution network for cost regularization and therefore require high computational cost, thus limiting
+                their
+                deployment in real-world applications. Our method achieves temporally coherent depth estimation results
+                by using
+                a novel Epipolar Spatio-Temporal (EST) transformer to explicitly associate geometric and temporal
+                correlation
+                with multiple estimated depth maps. Furthermore, to reduce the computational cost, inspired by recent
+                Mixture-of-Experts models, we design a compact hybrid network consisting of a 2D context-aware network
+                and a 3D
+                matching network which learn 2D context information and 3D disparity cues separately. Extensive
+                experiments
+                demonstrate that our method achieves higher accuracy in depth estimation and significant speedup than
+                the SOTA
+                methods. </p>
+            </p>
+        </div>
+
+<!--        full video-->
+<!--        <div class="section abstract">-->
+<!--            <h2>Full Video</h2><br>-->
+<!--            <center>-->
+<!--                &lt;!&ndash; <iframe width="640" height="360" src="data/video.mp4" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe> &ndash;&gt;-->
+<!--                <iframe width="640" height="360" src="https://www.youtube.com/embed/RFqPwH7QFEI" frameborder="0"-->
+<!--                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"-->
+<!--                        allowfullscreen></iframe>-->
+<!--                &lt;!&ndash;iframe src="./data/video.mp4" allow="autoplay; encrypted-media" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" width="560" height="315" frameborder="0"></iframe&ndash;&gt;-->
+<!--                &lt;!&ndash;<p style="font-size:11px; text-align:center">-->
+<!--                Download Video: <a href="data/video.mp4" target="_blank">HD</a> (MP4, 111 MB)-->
+<!--            </p>&ndash;&gt;-->
+<!--            </center>-->
+<!--        </div>-->
+
+        <div class="section abstract">
+            <h2>Qualitative comparision of single frame</h2>
+            <center>
+                <!-- <iframe width="640" height="360" src="./mp4/composite3.mp4" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe> -->
+                <video width="80%" playsinline="" autoplay="autoplay" loop="loop" preload="" muted="">
+                    <source src="./videos/single.mp4" type="video/mp4">
+                </video>
+            </center>
+        </div>
+
+        <div class="section abstract">
+            <h2>Qualitative comparision of three frames</h2>
+            <center>
+                <!-- <iframe width="640" height="360" src="./mp4/composite3.mp4" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe> -->
+                <video width="80%" playsinline="" autoplay="autoplay" loop="loop" preload="" muted="">
+                    <source src="./videos/three.mp4" type="video/mp4">
+                </video>
+            </center>
+        </div>
+
+        <div class="section abstract">
+            <h2>Qualitative comparision of ten frames</h2>
+            <center>
+                <!-- <iframe width="640" height="360" src="./mp4/composite3.mp4" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe> -->
+                <video width="80%" playsinline="" autoplay="autoplay" loop="loop" preload="" muted="">
+                    <source src="./videos/ten.mp4" type="video/mp4">
+                </video>
+            </center>
+        </div>
+
+
+
+        <div class="section abstract">
+            <h2>Citation</h2>
+            <div class="section bibtex" style="text-align:left; margin-left: 40px; margin-right: 40px">
+					<pre>
+            @article{long2021multi,
+              title={Multi-view Depth Estimation using Epipolar Spatio-Temporal Network},
+              author={Long, Xiaoxiao and Liu, Lingjie and Li, Wei and Theobalt, Christian and Wang, Wenping},
+              journal={CVPR},
+              year={2021}
+            </div>
+        </div>
+
+
+        <!--div class="section acknowledgments">
+            <h2>Acknowledgments</h2>
+            <p>
+                This work was funded by the ERC Consolidator Grant 4DRepLy (770784).
+            </p>
+        </div-->
+
+        <!--<div class="section acknowledgments">
+            <h2>Useful Links</h2>
+            <p>
+                <a href="https://www.bilibili.com/video/BV1e7411c7kR?p=52">Talk (in Chinese) at GAMES Webinar</a>
+                <a href="http://irc.cs.sdu.edu.cn/2020-summer-school/video/7.18%20pm%20Lingjie%20Liu.mp4
+            </p>
+        </div-->
+
+        <div class="section">
+            <hr class="smooth">
+            This page is <a href="http://www.zotero.org" target="_blank">Zotero</a> translator friendly. Page last
+            updated
+            <script type="text/javascript">
+                var m = "This page was last updated: " + document.lastModified;
+                var p = m.length - 9;
+                document.writeln("<left>");
+                document.write(m.substring(p, 0) + ".");
+                document.writeln("</left>");
+            </script>
+<!--            <a href="https://www.mpi-inf.mpg.de/imprint/">Imprint</a>. <a-->
+<!--                href="https://data-protection.mpi-klsb.mpg.de/inf/gvv.mpi-inf.mpg.de/projects/">Data Protection</a>.-->
+        </div>
+    </div>
+</div>
+</body>
+</html>
