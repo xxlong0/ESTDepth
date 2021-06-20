@@ -108,10 +108,11 @@ The license applies to the pre-trained models as well.
 
 Please cite as 
 ```bibtex
-@article{long2021multi,
-  title={Multi-view Depth Estimation using Epipolar Spatio-Temporal Network},
-  author={Long, Xiaoxiao and Liu, Lingjie and Li, Wei and Theobalt, Christian and Wang, Wenping},
-  journal={CVPR},
-  year={2021}
-}
+@InProceedings{Long_2021_CVPR,
+    author    = {Long, Xiaoxiao and Liu, Lingjie and Li, Wei and Theobalt, Christian and Wang, Wenping},
+    title     = {Multi-view Depth Estimation using Epipolar Spatio-Temporal Networks},
+    booktitle = {Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)},
+    month     = {June},
+    year      = {2021},
+    pages     = {8258-8267}
 ```
